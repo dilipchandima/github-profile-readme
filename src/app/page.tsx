@@ -1,7 +1,8 @@
 import ReactMarkdown from "react-markdown";
 
 import remarkGfm from "remark-gfm";
-const markdown = `# 💻 Tech Stack:
+const markdown = `
+# 💻 Tech Stack:
 
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![Kotlin](https://img.shields.io/badge/kotlin-%230095D5.svg?style=for-the-badge&logo=kotlin&logoColor=white) ![LaTeX](https://img.shields.io/badge/latex-%23008080.svg?style=for-the-badge&logo=latex&logoColor=white) ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white) ![Apache Ant](https://img.shields.io/badge/Apache%20Ant-A81C7D?style=for-the-badge&logo=Apache%20Ant&logoColor=white) ![Plotly](https://img.shields.io/badge/Plotly-%233F4F75.svg?style=for-the-badge&logo=plotly&logoColor=white) ![Gimp Gnu Image Manipulation Program](https://img.shields.io/badge/Gimp-657D8B?style=for-the-badge&logo=gimp&logoColor=FFFFFF)
 # 📊 GitHub Stats:
@@ -77,7 +78,12 @@ export default function Home() {
   return (
     <main>
       <h1 className="text-9xl font-bold">github profile readme</h1>
-      <ReactMarkdown remarkPlugins={[remarkGfm]}>{markdown}</ReactMarkdown>
+      <div className="container mx-auto flex flex-row flex-wrap">
+        <div className="flex-grow w-1/2">sd</div>
+        <div className="flex-grow  w-1/2 prose">
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>{markdown}</ReactMarkdown>
+        </div>
+      </div>
     </main>
   );
 }
