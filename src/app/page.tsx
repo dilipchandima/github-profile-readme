@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import ReactMarkdown from "react-markdown";
 
 import remarkGfm from "remark-gfm";
@@ -75,13 +78,40 @@ const markdown = `
 `;
 
 export default function Home() {
+  const [test, setTest] = useState(markdown);
+
+  const exportUserInfo = () => {
+    const blob = new Blob([test], { type: "text/plain" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.download = "user-info.md";
+    link.href = url;
+    link.click();
+  };
+
   return (
     <main>
       <h1 className="text-9xl font-bold">github profile readme</h1>
+      <input
+        type="text"
+        name="test"
+        placeholder="tyest"
+        onChange={(e) => {
+          console.log(e.target.value);
+          setTest(`# ${e.target.value}`);
+        }}
+        id=""
+      />
+      <button
+        className="bg-blue-400 px-2 py-1 rounded"
+        onClick={exportUserInfo}
+      >
+        Download
+      </button>
       <div className="container mx-auto flex flex-row flex-wrap">
         <div className="flex-grow w-1/2">sd</div>
         <div className="flex-grow  w-1/2 prose">
-          <ReactMarkdown remarkPlugins={[remarkGfm]}>{markdown}</ReactMarkdown>
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>{test}</ReactMarkdown>
         </div>
       </div>
     </main>
